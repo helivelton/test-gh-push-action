@@ -7,9 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
     - name: Create local changes
       run: |
-        touch $RANDOM
+        npm run increment-version minor
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
